@@ -39,7 +39,7 @@
 #
 #    0 5 * * * /opt/backup.sh
 #
-# 5. You can temporarily disable your backup by creating an /etc/nobackup file. If that file
+# 6. You can temporarily disable your backup by creating an /etc/nobackup file. If that file
 # exists then this script exits.
 #
 # NOTES:
@@ -53,7 +53,7 @@
 #
 # I encrypt all of my home directories, so this script only rsyncs home directories
 # that are not encrypted (i.e. home directories of logged-in users). This works fine for
-# me because I usually just lock the screen on my laptop when I'm at home and it's in
+# me because I usually just lock the screen on my laptop when I am at home and my laptop is in
 # its docking station (which my external USB drive is connected to). You'll probably need
 # to do something different that that. See USAGE.
 #
@@ -163,6 +163,7 @@ start_backup()
 	  backup_failed "Unable to mount the backup disk"
       fi
    else
+      echo "$DESTINATION_MOUNT was already mounted when backup.sh started"
       ALREADY_MOUNTED_AT_STARTUP=1
    fi
 
